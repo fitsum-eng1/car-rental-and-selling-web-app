@@ -1,0 +1,51 @@
+/* Stuck Booking Styles */
+.stuck-booking-item {
+    background-color: #fef2f2;
+    border-left: 4px solid #f87171;
+}
+
+.stuck-booking-warning {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.urgency-critical {
+    background-color: #fee2e2;
+    color: #7f1d1d;
+}
+
+.urgency-urgent {
+    background-color: #fed7aa;
+    color: #9a3412;
+}
+
+.urgency-warning {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.urgency-normal {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+/* Animation for stuck booking alerts */
+.stuck-booking-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .8;
+    }
+}
+
+/* Hover effects for action buttons */
+.stuck-action-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-in-out;
+}

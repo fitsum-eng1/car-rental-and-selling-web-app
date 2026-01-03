@@ -1,0 +1,534 @@
+/* 🎬 COMPLETE ANIMATION SYSTEM - Car Rental & Sales Platform */
+
+/* 1️⃣ GLOBAL MOTION TOKENS */
+:root {
+  /* Duration Scale */
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-micro: 200ms;
+  --duration-standard: 300ms;
+  --duration-mid: 400ms;
+  --duration-slow: 600ms;
+  --duration-complex: 800ms;
+  --duration-cinematic: 1200ms;
+  
+  /* Easing Curves */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-out-fast: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-natural: cubic-bezier(0.25, 0.8, 0.25, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Animation Delays for Staggering */
+  --stagger-delay: 80ms;
+  --stagger-delay-fast: 50ms;
+  --stagger-delay-slow: 120ms;
+}
+
+/* 2️⃣ ANIMATE.CSS OVERRIDES */
+.animate__animated {
+  --animate-duration: var(--duration-standard);
+  --animate-delay: 0ms;
+}
+
+/* 3️⃣ REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .car-3d-viewer {
+    transform: none !important;
+  }
+}
+
+/* 4️⃣ PAGE TRANSITION ANIMATIONS */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity var(--duration-mid) var(--ease-standard),
+              transform var(--duration-mid) var(--ease-standard);
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity var(--duration-fast) var(--ease-out-fast),
+              transform var(--duration-fast) var(--ease-out-fast);
+}
+
+/* 5️⃣ HERO SECTION ANIMATIONS */
+.hero-title {
+  animation: heroTitleEntrance var(--duration-slow) var(--ease-natural) forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-subtitle {
+  animation: heroSubtitleEntrance var(--duration-slow) var(--ease-natural) 0.2s forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-cta {
+  animation: heroCTAEntrance var(--duration-mid) var(--ease-spring) 0.4s forwards;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+@keyframes heroTitleEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitleEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroCTAEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 6️⃣ VEHICLE CARD ANIMATIONS */
+.vehicle-card {
+  transition: transform var(--duration-micro) var(--ease-standard),
+              box-shadow var(--duration-micro) var(--ease-standard);
+  will-change: transform;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-card-image {
+  transition: transform var(--duration-standard) var(--ease-standard);
+  overflow: hidden;
+}
+
+.vehicle-card:hover .vehicle-card-image img {
+  transform: scale(1.1);
+}
+
+.vehicle-card-price {
+  transition: color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-spring);
+}
+
+.vehicle-card:hover .vehicle-card-price {
+  color: #3b82f6;
+  transform: scale(1.05);
+}
+
+/* 7️⃣ STAGGERED LIST ANIMATIONS */
+.stagger-container .stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerFadeInUp var(--duration-standard) var(--ease-standard) forwards;
+}
+
+.stagger-item:nth-child(1) { animation-delay: calc(1 * var(--stagger-delay)); }
+.stagger-item:nth-child(2) { animation-delay: calc(2 * var(--stagger-delay)); }
+.stagger-item:nth-child(3) { animation-delay: calc(3 * var(--stagger-delay)); }
+.stagger-item:nth-child(4) { animation-delay: calc(4 * var(--stagger-delay)); }
+.stagger-item:nth-child(5) { animation-delay: calc(5 * var(--stagger-delay)); }
+.stagger-item:nth-child(6) { animation-delay: calc(6 * var(--stagger-delay)); }
+.stagger-item:nth-child(7) { animation-delay: calc(7 * var(--stagger-delay)); }
+.stagger-item:nth-child(8) { animation-delay: calc(8 * var(--stagger-delay)); }
+.stagger-item:nth-child(9) { animation-delay: calc(9 * var(--stagger-delay)); }
+
+@keyframes staggerFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 8️⃣ BUTTON MICRO-INTERACTIONS */
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.btn-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-animated:active {
+  transform: translateY(0);
+  transition-duration: var(--duration-instant);
+}
+
+/* Ripple Effect */
+.btn-animated::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width var(--duration-mid) var(--ease-standard),
+              height var(--duration-mid) var(--ease-standard);
+}
+
+.btn-animated:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* 9️⃣ FORM INPUT ANIMATIONS */
+.input-animated {
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+.input-animated:focus {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input-error {
+  animation: inputShake var(--duration-micro) var(--ease-standard);
+}
+
+@keyframes inputShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* 🔟 LOADING ANIMATIONS */
+.skeleton-loader {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.spinner-3d {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin3D 1s linear infinite;
+}
+
+@keyframes spin3D {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 1️⃣1️⃣ MODAL ANIMATIONS */
+.modal-backdrop {
+  opacity: 0;
+  transition: opacity var(--duration-standard) var(--ease-standard);
+}
+
+.modal-backdrop.show {
+  opacity: 1;
+}
+
+.modal-content {
+  transform: scale(0.7) translateY(-50px);
+  opacity: 0;
+  transition: transform var(--duration-standard) var(--ease-spring),
+              opacity var(--duration-standard) var(--ease-standard);
+}
+
+.modal-content.show {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+/* 1️⃣2️⃣ NOTIFICATION ANIMATIONS */
+.notification {
+  transform: translateX(100%);
+  transition: transform var(--duration-standard) var(--ease-natural);
+}
+
+.notification.show {
+  transform: translateX(0);
+}
+
+.notification.success {
+  animation: successPulse var(--duration-mid) var(--ease-spring);
+}
+
+@keyframes successPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* 1️⃣3️⃣ SEARCH & FILTER ANIMATIONS */
+.filter-panel {
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform var(--duration-standard) var(--ease-natural),
+              opacity var(--duration-standard) var(--ease-natural);
+}
+
+.filter-panel.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.search-results-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.search-results-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-standard) var(--ease-standard),
+              transform var(--duration-standard) var(--ease-standard);
+}
+
+/* 1️⃣4️⃣ BOOKING FLOW ANIMATIONS */
+.booking-step {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity var(--duration-standard) var(--ease-standard),
+              transform var(--duration-standard) var(--ease-standard);
+}
+
+.booking-step.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.booking-step-indicator {
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-spring);
+}
+
+.booking-step-indicator.active {
+  transform: scale(1.2);
+}
+
+.booking-step-indicator.completed {
+  animation: stepCompleted var(--duration-mid) var(--ease-spring);
+}
+
+@keyframes stepCompleted {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1.1); }
+}
+
+/* 1️⃣5️⃣ PAYMENT ANIMATIONS */
+.payment-success {
+  animation: paymentSuccessAnimation var(--duration-slow) var(--ease-spring);
+}
+
+@keyframes paymentSuccessAnimation {
+  0% { 
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.payment-pending {
+  animation: paymentPending 2s ease-in-out infinite;
+}
+
+@keyframes paymentPending {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* 1️⃣6️⃣ 3D CAR VIEWER CONTAINER */
+.car-3d-viewer {
+  transition: transform var(--duration-standard) var(--ease-standard);
+  will-change: transform;
+}
+
+.car-3d-viewer:hover {
+  transform: scale(1.02);
+}
+
+.car-3d-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  animation: car3DLoading 2s ease-in-out infinite;
+}
+
+@keyframes car3DLoading {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* 1️⃣7️⃣ LANGUAGE SWITCH ANIMATION */
+.language-switch {
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+
+.language-switch:hover {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.language-content {
+  transition: opacity var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+.language-switching .language-content {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* 1️⃣8️⃣ DASHBOARD STATS ANIMATIONS */
+.stat-counter {
+  animation: countUp var(--duration-slow) var(--ease-natural);
+}
+
+@keyframes countUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.dashboard-card {
+  transition: transform var(--duration-micro) var(--ease-standard),
+              box-shadow var(--duration-micro) var(--ease-standard);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 1️⃣9️⃣ EMPTY STATE ANIMATIONS */
+.empty-state {
+  animation: emptyStateEntrance var(--duration-slow) var(--ease-natural);
+}
+
+@keyframes emptyStateEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 2️⃣0️⃣ SCROLL REVEAL ANIMATIONS */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--duration-standard) var(--ease-standard),
+              transform var(--duration-standard) var(--ease-standard);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2️⃣1️⃣ UTILITY CLASSES */
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounceSubtle 2s infinite;
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+  to { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+}
+
+/* 2️⃣2️⃣ PERFORMANCE OPTIMIZATIONS */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* 2️⃣3️⃣ BRAND-SPECIFIC ANIMATIONS */
+.brand-logo {
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.brand-logo:hover {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.premium-highlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left var(--duration-slow) var(--ease-standard);
+}
+
+.premium-highlight:hover::before {
+  left: 100%;
+}
