@@ -1,0 +1,22 @@
+# This is a placeholder for the 3D car model file
+# In production, you would place actual GLTF/GLB 3D car models here
+# 
+# Recommended sources for car models:
+# 1. Sketchfab (https://sketchfab.com) - High-quality automotive models
+# 2. TurboSquid (https://www.turbosquid.com) - Professional 3D models
+# 3. CGTrader (https://www.cgtrader.com) - Marketplace for 3D models
+# 4. Free3D (https://free3d.com) - Free 3D models
+#
+# Model Requirements:
+# - Format: GLTF 2.0 (.glb preferred for single file)
+# - Size: Under 10MB for web performance
+# - Compression: Use DRACO compression for smaller file sizes
+# - Materials: PBR materials with proper textures
+# - Optimization: Low-poly models optimized for real-time rendering
+#
+# File naming convention:
+# - generic-car.glb (fallback model)
+# - sedan-2024.glb (specific vehicle models)
+# - suv-luxury.glb (category-based models)
+#
+# This placeholder file should be replaced with actual 3D models

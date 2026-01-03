@@ -1,0 +1,42 @@
+{
+  "node_modules/three/examples/jsm/controls/OrbitControls.js": {
+    "file": "assets/OrbitControls-BEN8MSJi.js",
+    "name": "OrbitControls",
+    "src": "node_modules/three/examples/jsm/controls/OrbitControls.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "node_modules/three/examples/jsm/loaders/GLTFLoader.js": {
+    "file": "assets/GLTFLoader-BNzSYna9.js",
+    "name": "GLTFLoader",
+    "src": "node_modules/three/examples/jsm/loaders/GLTFLoader.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BLBQFjmY.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-B8iz-Mc3.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "node_modules/three/examples/jsm/loaders/GLTFLoader.js"
+    ],
+    "css": [
+      "assets/app-Cncjd60S.css"
+    ]
+  }
+}
